@@ -15,7 +15,8 @@ for x in range(20,41):
 
     soup = BeautifulSoup(response.content, 'html.parser')
 
-    posts = soup.find_all('div', {'data-role': 'commentContent'})
+    posts = soup.find_all(['div'], {'data-role': 'commentContent'})
+    posts.extend(soup.find_all(['div'], {'class' : "ipsQuote_contents"}))
 
 
     for post in posts:
@@ -42,7 +43,7 @@ for x in range(20,41):
                 'Gehalt': salary_line
             })
 
-print("length data:")
+print("length full data:")
 print(len(data))
 extracted_data = []
 
